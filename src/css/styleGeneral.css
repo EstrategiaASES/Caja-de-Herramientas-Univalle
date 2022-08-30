@@ -1,0 +1,34 @@
+
+body,html {
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+}
+
+#root {
+    display: grid;
+    grid-auto-rows: auto;
+    grid-template-columns: 100%;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+
+/* -------------------------------------------------------------- */
+
+.Box-style-home-category {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    width: 80%;
+    height: 80%;
+    overflow: hidden;
+}
+
+
+
+/* -------------------------------------------------------------- */
