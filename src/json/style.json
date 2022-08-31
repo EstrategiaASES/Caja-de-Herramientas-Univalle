@@ -1,7 +1,34 @@
 {
     "home-styles": {
         "0": {
-            "cls-1": "Box-style-home-category"
+            "cls-1": "Box-style-home-category",
+            "cls-2": "Box-style-home-category-select",
+            "botones": [
+                {
+                    "name": "Academica",
+                    "id": "1"
+                },
+                {
+                    "name": "Economica",
+                    "id": "2"
+                },
+                {
+                    "name": "Familiar",
+                    "id": "3"
+                },
+                {
+                    "name": "Individual",
+                    "id": "4"
+                },
+                {
+                    "name": "Vida Universitaria",
+                    "id": "5"
+                },
+                {
+                    "name": "Cuerpo Expandido",
+                    "id": "6"
+                }
+            ]
         }
     }
 }

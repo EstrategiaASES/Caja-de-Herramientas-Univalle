@@ -1,10 +1,5 @@
 
-body,html {
-    padding: 0;
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    overflow: hidden;
-}
+
 
 #root {
     display: grid;
@@ -12,23 +7,75 @@ body,html {
     grid-template-columns: 100%;
     justify-items: center;
     align-items: center;
+    height: auto;
+    min-height: 100vh;
     width: 100%;
-    height: 100vh;
-    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 
-/* -------------------------------------------------------------- */
+/* --------------------------------------------------------------*/ 
 
 .Box-style-home-category {
     display: grid;
+    grid-auto-rows: auto;
+    grid-template-columns: 100%;
     justify-items: center;
+    gap: 0.8em;
     align-items: center;
     width: 80%;
-    height: 80%;
+    height: auto;
+    max-height: 90%;
+    position: relative;
+    border-radius: 0.3em;
+    padding: 0.4em 0.4em;
+    box-shadow:  0px 0px 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.Box-style-home-category-select {
+    display: grid;
+    grid-auto-rows: auto;
+    grid-template-columns: 100%;
+    grid-gap: 0.5em;
+    justify-items: center;
+    align-items: center;
+    width: 50em;
+    height: auto;
+    min-height: 30em;
+    border-radius: 0.15em;
+    margin-bottom: 5em;
     overflow: hidden;
 }
 
 
 
 /* -------------------------------------------------------------- */
+
+@media screen and (max-width: 1100px) {
+    .Box-style-home-category-select {
+
+        margin-bottom: 15em;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .Box-style-home-category {
+        width: 90%;
+        min-height: 60em;
+    } 
+}
+
+@media screen and (max-width: 768px) {
+    .Box-style-home-category {
+        width: 90%;
+        min-height: 36em;
+    }
+    .Box-style-home-category-select {
+        width: 100%;
+        height: auto;
+        border-radius: 0.15em;
+        margin-bottom: 6em;
+    }
+
+}

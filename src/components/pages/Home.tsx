@@ -11,7 +11,7 @@ import { CategoriasIniciales } from '../homeComponents/CategoriasIniciales';
 */
 export function Home(props: JSON) {
 
-    const state_home = (Object(props).properties)['home-styles'];
+    const state_home = ((Object(props).properties)['home-styles'])['0'];
 
     return (
         <>
@@ -21,5 +21,3 @@ export function Home(props: JSON) {
 
 }
 
-
-export default Home;
