@@ -11,7 +11,7 @@ import $ from 'jquery';
 const useStyles = makeStyles((theme) => ({
 
     'title-category': {
-        fontSize: '3em',
+        fontSize: '2em',
         fontWeight: '400',
         color: 'hsl(198deg 32% 16%)',
         textAlign: 'center',
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 'bold',
         textAlign: 'center',
         height: '3em',
-        width: '50%',
+        width: '37%',
         fontSize: '1.2em',
         opasity: '1',
         //hover
@@ -35,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
         "@media (max-width: 600px)": {
             fontSize: '0.8em',
             height: '3.5em',
+            width: '60%',
         }
     },
     imgUV: {
