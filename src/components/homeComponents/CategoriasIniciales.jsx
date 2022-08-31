@@ -5,7 +5,7 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import logoUnivalle from '../../images/logoasesuv.svg';
 //importar componentes
 import { TitleAplication } from './TitleAplication.tsx';
-
+import $ from 'jquery';
 
 //estilos de los componentes
 const useStyles = makeStyles((theme) => ({
@@ -26,7 +26,8 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center',
         height: '3em',
         width: '50%',
-        fontSize: '1.3em',
+        fontSize: '1.2em',
+        opasity: '1',
         //hover
         '&:hover': {
             backgroundColor: '#ff725e',
@@ -60,18 +61,28 @@ export function CategoriasIniciales(props) {
     let state = props.properties;
     const classes = useStyles();
 
+    //usestate
+    const [click, setClick] = React.useState({
+        boton: 0,
+        botonesName: ['botones', '1', '2', '3', '4', '5', '6']
+    });
+
+    let handleClick = (event) => {
+        click_box(event, click, setClick)
+    }
+
     return (
 
         <div className={state['cls-1']}>
             <TitleAplication />
             <div className={state['cls-2']}>
-                <Typography className={classes['title-category']}>
-                    Seleccioné una Dimensión
+                <Typography id="title-app-cha" className={classes['title-category']}>
+                    Seleccioné una {`${(click.boton === 0) ? 'Dimensión' : 'Categoría'}`}
                 </Typography>
                 {
-                    state['botones'].map((item, index) => (
+                    state[click.botonesName[click.boton]].map((item, index) => (
 
-                        <Button key={index} variant="contained" className={classes.buttonCategory}>
+                        <Button id={item.id} key={index} onClick={handleClick} variant="contained" className={classes.buttonCategory}>
                             {item.name}
                         </Button>
                     )
@@ -87,6 +98,46 @@ export function CategoriasIniciales(props) {
 
 
 /**
- *     
-                
- */
+ *  @author : cristian Duvan Machado <cristian.machado@correounivalle.edu.co>
+ *  @decs animacion sencilla para la caja
+*/
+function click_box(event, click, setClick) {
+
+    let id = event.currentTarget.id
+
+    //animacion de desaparecer y aparecer el boton
+    $('.Box-style-home-category-select').animate({
+        opacity: 0,
+    }, 1000, function () {
+
+        if (click.boton === 0) {
+            setClick({
+                ...click,
+                boton: id
+            })
+        } else {
+            setClick({
+                ...click,
+                boton: 0
+            })
+        }
+
+        $('.Box-style-home-category-select').animate({
+            opacity: 1,
+        }, 1500);
+
+    });
+
+    let font_size = $('#title-app-cha').css('font-size');
+
+    //animacion para letra
+    $('#title-app-cha').animate({
+        fontSize: '0em',
+    }, 1000, function () {
+        $('#title-app-cha').animate({
+            fontSize: font_size,
+        }, 1500);
+    });
+
+
+}

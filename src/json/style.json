@@ -3,6 +3,7 @@
         "0": {
             "cls-1": "Box-style-home-category",
             "cls-2": "Box-style-home-category-select",
+            "cls-3": "Box-style-home-category-select",
             "botones": [
                 {
                     "name": "Academica",
@@ -28,7 +29,140 @@
                     "name": "Cuerpo Expandido",
                     "id": "6"
                 }
+            ],
+            "1": [
+                {
+                    "name": "Tecnicas de Lectura",
+                    "id": "Academica-1"
+                },
+                {
+                    "name": "Tecnicas de Escritura",
+                    "id": "Academica-2"
+                },
+                {
+                    "name": "Tecnicas de Oralidad",
+                    "id": "Academica-3"
+                },
+                {
+                    "name": "Manejo del Tiempo",
+                    "id": "Academica-4"
+                },
+                {
+                    "name": "Metodos de Estudio",
+                    "id": "Academica-5"
+                },
+                {
+                    "name": "Orientacion Vocacional",
+                    "id": "Academica-6"
+                },
+                {
+                    "name": "Motivasion y Manejo de Emociones",
+                    "id": "Academica-7"
+                }
+            ],
+            "2": [
+                {
+                    "name": "Manejo del dinero",
+                    "id": "Economica-1"
+                },
+                {
+                    "name": "Becas y Subsidios",
+                    "id": "Economica-2"
+                },
+                {
+                    "name": "Empleo",
+                    "id": "Economica-3"
+                }
+            ],
+            "3": [
+                {
+                    "name": "Vida Familiar",
+                    "id": "Familiar-1"
+                },
+                {
+                    "name": "Hisotiria de Vida",
+                    "id": "Familiar-2"
+                }
+            ],
+            "4": [
+                {
+                    "name": "Historia y Memoria",
+                    "id": "Individual-1"
+                },
+                {
+                    "name": "Proyecto de Vida",
+                    "id": "Individual-2"
+                },
+                {
+                    "name": "Autoconocimiento",
+                    "id": "Individual-3"
+                },
+                {
+                    "name": "Salud Mental",
+                    "id": "Individual-4"
+                },
+                {
+                    "name": "Redes de Apoyo",
+                    "id": "Individual-5"
+                },
+                {
+                    "name": "Liderazgo",
+                    "id": "Individual-6"
+                }
+            ],
+            "5": [
+                {
+                    "name": "Conociendo la U",
+                    "id": "Vida-Universitaria-1"
+                },
+                {
+                    "name": "Conociendo ASES",
+                    "id": "Vida-Universitaria-2"
+                },
+                {
+                    "name": "Servicios Universitarios",
+                    "id": "Vida-Universitaria-3"
+                },
+                {
+                    "name": "Oferta Bienestar Universitario",
+                    "id": "Vida-Universitaria-4"
+                },
+                {
+                    "name": "Grupos de Investigacion",
+                    "id": "Vida-Universitaria-5"
+                }
+            ],
+            "6": [
+                {
+                    "name": "Expresion Corporal",
+                    "id": "Cuerpo-Expandido-1"
+                },
+                {
+                    "name": "Oralidad",
+                    "id": "Cuerpo-Expandido-2"
+                },
+                {
+                    "name": "Escritura Creativa",
+                    "id": "Cuerpo-Expandido-3"
+                },
+                {
+                    "name": "Musico Terapia",
+                    "id": "Cuerpo-Expandido-4"
+                },
+                {
+                    "name": "El Juego",
+                    "id": "Cuerpo-Expandido-5"
+                },
+                {
+                    "name": "Estimulation",
+                    "id": "Cuerpo-Expandido-6"
+                },
+                {
+                    "name": "Trabajo en Equipo",
+                    "id": "Cuerpo-Expandido-7"
+                }
             ]
+            
         }
     }
 }
