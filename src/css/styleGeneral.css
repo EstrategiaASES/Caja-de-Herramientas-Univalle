@@ -45,6 +45,23 @@
     min-height: 30em;
     border-radius: 0.15em;
     margin-bottom: 5em;
+    opacity: 1;
+    overflow: hidden;
+}
+
+.Box-style-home-dimension-select {
+    display: grid;
+    grid-auto-rows: auto;
+    grid-template-columns: 100%;
+    grid-gap: 0.5em;
+    justify-items: center;
+    align-items: center;
+    width: 50em;
+    height: auto;
+    min-height: 30em;
+    border-radius: 0.15em;
+    margin-bottom: 5em;
+    opacity: 1;
     overflow: hidden;
 }
 
