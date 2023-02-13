@@ -1,8 +1,11 @@
 //import librerias
+import { Typography } from '@material-ui/core';
 import React from 'react';
 
 //import componentes
 import { CategoriasIniciales } from '../homeComponents/CategoriasIniciales';
+import { Header } from '../homeComponents/Header';
+import { Footer } from '../homeComponents/Footer';
 
 
 /**
@@ -10,12 +13,14 @@ import { CategoriasIniciales } from '../homeComponents/CategoriasIniciales';
  *  @decs home component
 */
 export function Home(props: JSON) {
-
+    console.log(props,'props home');
     const state_home = ((Object(props).properties)['home-styles'])['0'];
 
     return (
         <>
-           <CategoriasIniciales properties={state_home} />
+            <Header properties={state_home} />  
+            <CategoriasIniciales properties={state_home} />
+            <Footer properties={state_home} />
         </>
     );
 

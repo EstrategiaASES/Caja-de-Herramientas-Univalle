@@ -2,9 +2,12 @@
 import React from 'react';
 import { Button, Typography } from '@material-ui/core';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import logoUnivalle from '../../images/logoasesuv.svg';
-//importar componentes
-import { TitleAplication } from './TitleAplication.tsx';
+import logoUnivalle from '../../images/left_2.png';
+import personImg from '../../images/rigth_11.png';
+import estanteria_1 from '../../images/estanteria_1.png';
+import estanteria_2 from '../../images/estanteria_2.png';
+import estanteria_3 from '../../images/estanteria_3.png';
+import estanteria_4 from '../../images/estanteria_4.png';
 import $ from 'jquery';
 
 //estilos de los componentes
@@ -30,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
         opasity: '1',
         //hover
         '&:hover': {
-            backgroundColor: '#ff725e',
+            backgroundColor: '#ff725e ',
         },
         "@media (max-width: 600px)": {
             fontSize: '0.8em',
@@ -65,35 +68,37 @@ export function CategoriasIniciales(props) {
     //usestate
     const [click, setClick] = React.useState({
         boton: 0,
-        botonesName: ['botones', '1', '2', '3', '4', '5', '6']
+        botonesName: ['botones','1', '2', '3', '4', '5', '6']
     });
 
     let handleClick = (event) => {
         click_box(event, click, setClick)
     }
 
+     //[{},{}]
     return (
-
-        <div className={state['cls-1']}>
-            <TitleAplication />
-            <div className={state['cls-2']}>
-                <Typography id="title-app-cha" className={classes['title-category']}>
-                    Seleccioné una {`${(click.boton === 0) ? 'Dimensión' : 'Categoría'}`}
-                </Typography>
-                {
-                    state[click.botonesName[click.boton]].map((item, index) => (
-
-                        <Button id={item.id} key={index} onClick={handleClick} variant="contained" className={classes.buttonCategory}>
-                            {item.name}
-                        </Button>
-                    )
-                    )
-                }
-
+        <div className='box-background'>
+            <div className='letrero-caja'>
+               <img src={logoUnivalle} />
             </div>
-            <img className={classes.imgUV} src={logoUnivalle} />
+            <div className='box-home-category-select'>
+                <div>
+                    <img src={estanteria_1} />
+                </div>
+                <div>
+                    <img src={estanteria_2} />
+                </div>
+                <div>
+                     <img src={estanteria_3} />
+                </div>
+                <div>
+                     <img src={estanteria_4} />
+                </div>
+            </div>
+            <div className='personas-caja'>
+                <img src={personImg} />
+            </div>
         </div>
-
     )
 }
 
@@ -105,7 +110,7 @@ export function CategoriasIniciales(props) {
 function click_box(event, click, setClick) {
 
     let id = event.currentTarget.id
-
+    //# 
     //animacion de desaparecer y aparecer el boton
     $('.Box-style-home-category-select').animate({
         opacity: 0,
@@ -142,3 +147,4 @@ function click_box(event, click, setClick) {
 
 
 }
+
