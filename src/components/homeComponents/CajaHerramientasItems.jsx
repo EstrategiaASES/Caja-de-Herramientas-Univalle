@@ -12,7 +12,7 @@ export default function CajaHerramientasItems(props) {
     });
 
     const event_click = (e) => {
-        const id = (e.target.id).split('|')[1];
+        const id = (e.currentTarget.id).split('|')[1];
         const data = json_data_dimension.filter((item) => item.Tematica === id);
         props_data.data_set({...props_data.data, data_table: data})
         document.querySelector('.click-exit').classList.remove('display-none');
