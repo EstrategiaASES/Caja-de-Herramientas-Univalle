@@ -9,7 +9,7 @@ import estanteria_2 from '../../images/estanteria_2.png';
 import estanteria_3 from '../../images/estanteria_3.png';
 import estanteria_4 from '../../images/estanteria_4.png';
 import CajaHerramientasItems from './CajaHerramientasItems';
-import $ from 'jquery';
+import TableInfoTematica from './TableInfoTematica';
 
 //estilos de los componentes
 const useStyles = makeStyles((theme) => ({
@@ -81,9 +81,15 @@ export function CategoriasIniciales(props) {
         }
    ];
 
+    //setdata
+    const [data, setData] = React.useState({
+        data_table: []
+    });
+
 
     //[{},{}]
     return (
+        <>
         <div className='box-background'>
             <div className='letrero-caja'>
                <img src={logoUnivalle} />
@@ -91,11 +97,11 @@ export function CategoriasIniciales(props) {
             <div className='box-home-category-select'>
                 {
                     array_estanteria.map((item, index) => {
-                        console.log(item.name);
+                       
                         return (
                             <div key={index}>
                                 {(index > 0) && (
-                                    <CajaHerramientasItems properties={ {name: item.name} } />
+                                    <CajaHerramientasItems properties={ {name: item.name , data: data, data_set: setData} } />
                                 )}
                                 <img src={item.img} />
                             </div>
@@ -107,6 +113,8 @@ export function CategoriasIniciales(props) {
                 <img src={personImg} />
             </div>
         </div>
+        <TableInfoTematica properties={data.data_table} />
+        </>
     )
 }
 

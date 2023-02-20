@@ -13,7 +13,7 @@ import { Footer } from '../homeComponents/Footer';
  *  @decs home component
 */
 export function Home(props: JSON) {
-    console.log(props,'props home');
+    
     const state_home = ((Object(props).properties)['home-styles'])['0'];
 
     return (
