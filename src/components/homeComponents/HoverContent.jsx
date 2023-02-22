@@ -6,16 +6,17 @@ export default function HoverContent(props) {
     let props_data = props.properties;
     return (
         <div className='container-items-hover'>
-            <div className='title-tematica'>{props_data.name}</div>
-            <div className='content-tematicas'>
-                {
-                    create_text_hover(props_data.json, props_data.name).map((item, index) => {
-                        return (
-                            <p key={index}>{item}</p>
-                        )
-                    })
-                }
-            </div>
+                <div className='box-hover' />
+                <div className='title-tematica'>{props_data.name}</div>
+                <div className='content-tematicas'>
+                    {
+                        create_text_hover(props_data.json, props_data.name).map((item, index) => {
+                            return (
+                                <p key={index}>{item}</p>
+                            )
+                        })
+                    }
+                </div>
         </div>
     )
 }

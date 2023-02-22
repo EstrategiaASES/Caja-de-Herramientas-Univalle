@@ -2,6 +2,7 @@
 import React from 'react';
 import json_data_dimension from '../../json/data_dimensiones.json';
 import HoverContent from './HoverContent';
+import hecharlo_todo_a_perder from './module_img'
 
 export default function CajaHerramientasItems(props) {
     let props_data = props.properties;
@@ -27,10 +28,11 @@ export default function CajaHerramientasItems(props) {
                 (props_data.name).map((item, index) => (
                     
                     create_caja_herramienta({ Dimension: item}).map((item, index) => {
+                           console.log(hecharlo_todo_a_perder[((item.Codigo).split('-')[0])])
                             return (
                                 <a id={`${index}|${item.Tematica}`} onClick={event_click} type='button' key={index} className='items-herramientas'>
                                     <HoverContent  properties={ {name: item.Tematica , json: json_data_dimension} } />
-                                    { index /*(item.Tematica).split('-')[1]*/}
+                                    <img src={hecharlo_todo_a_perder[((item.Codigo).split('-')[0])]} />
                                 </a>
                             )
                     })
