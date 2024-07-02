@@ -35,6 +35,7 @@ function Body(props) {
       }}
     >
       <Grid
+        className="grid_Container"
         container
         sx={{
           flex: 1,
@@ -44,6 +45,7 @@ function Body(props) {
         }}
       >
         <Grid
+          className="grid_columna_izquierda"
           item
           xs={2}
           sx={{
@@ -118,6 +120,7 @@ function Body(props) {
           </Box>
         </Grid>
         <Grid
+          className="grid_columna_derecha"
           item
           xs={2}
           sx={{
