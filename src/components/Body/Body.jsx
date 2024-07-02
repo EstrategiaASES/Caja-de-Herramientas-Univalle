@@ -102,7 +102,7 @@ function Body(props) {
                     alignItems: "flex-end",
                     padding: 0,
                     width: "100%",
-                    borderBottom: "10px solid #000"
+                    
                   }}
                 >
                   <img
@@ -110,7 +110,7 @@ function Body(props) {
                     alt={`Estanteria ${index}`}
                     style={{ width: "100%", height: "auto" }}
                   />
-                  <Box sx={{borderBottom: "10px solid #000"}}>
+                  <Box sx={{}}>
                   {index > 0 && item.name && Array.isArray(item.name) && (
                     <CajaHerramientasItems
                       properties={{
