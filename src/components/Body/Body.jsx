@@ -30,7 +30,7 @@ function Body(props) {
         flexDirection: "column",
         margin: 0,
         padding: 0,
-        width: "100vw",
+        width: "100%",
         overflow: "hidden",
       }}
     >
@@ -76,17 +76,20 @@ function Body(props) {
           item
           xs={8}
           sx={{
+            height: "100%",
+            width: "100%",
             display: "flex",
             justifyContent: "center",
             alignItems: "flex-end",
             padding: 0,
+            backgroundColor: "#60686f"
           }}
         >
           <Box sx={{ width: "100%" }}>
             <Grid
               container
               spacing={0}
-              sx={{ width: "100%", height: "100%", margin: 0, padding: 0 }}
+              sx={{ width: "100%", height: "100%", margin: 0, padding: 0}}
             >
               {array_estanteria.map((item, index) => (
                 <Grid
@@ -94,12 +97,20 @@ function Body(props) {
                   xs={12}
                   key={index}
                   sx={{
-                    display: "flex",
+                    display: "absolute",
                     justifyContent: "center",
                     alignItems: "flex-end",
                     padding: 0,
+                    width: "100%",
+                    borderBottom: "10px solid #000"
                   }}
                 >
+                  <img
+                    src={item.img}
+                    alt={`Estanteria ${index}`}
+                    style={{ width: "100%", height: "auto" }}
+                  />
+                  <Box sx={{borderBottom: "10px solid #000"}}>
                   {index > 0 && item.name && Array.isArray(item.name) && (
                     <CajaHerramientasItems
                       properties={{
@@ -109,11 +120,7 @@ function Body(props) {
                       }}
                     />
                   )}
-                  <img
-                    src={item.img}
-                    alt={`Estanteria ${index}`}
-                    style={{ width: "100%", height: "auto" }}
-                  />
+                  </Box>
                 </Grid>
               ))}
             </Grid>
