@@ -36,18 +36,20 @@ function Body(props) {
     >
       <Grid
         className="grid_Container"
+        columns={12}
         container
         sx={{
           flex: 1,
           width: "100%",
           margin: 0,
           padding: 0,
+
         }}
       >
         <Grid
           className="grid_columna_izquierda"
           item
-          xs={2}
+          xs={1}
           sx={{
             display: "flex",
             justifyContent: "center",
@@ -55,41 +57,26 @@ function Body(props) {
             padding: 0,
           }}
         >
-          <Box
-            className="imagen_rompehielo"
-            sx={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "flex-end",
-            }}
-          >
-            <img
-              src={logoUnivalle}
-              alt="Univalle Logo"
-              style={{ width: "80%", height: "auto" }}
-            />
-          </Box>
         </Grid>
         <Grid
           className="grid_Estanteria"
           item
-          xs={8}
+          xs={10}
           sx={{
             height: "100%",
             width: "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "flex-end",
+            display: "absolute",
             padding: 0,
-            backgroundColor: "#60686f"
+            backgroundColor: "#60686f",
+            border: "30px solid #ffb846",
+            borderRadius: "8px",
           }}
         >
           <Box sx={{ width: "100%" }}>
             <Grid
               container
               spacing={0}
-              sx={{ width: "100%", height: "100%", margin: 0, padding: 0}}
+              sx={{ width: "100%", height: "100%", margin: 0, padding: 0 }}
             >
               {array_estanteria.map((item, index) => (
                 <Grid
@@ -102,34 +89,54 @@ function Body(props) {
                     alignItems: "flex-end",
                     padding: 0,
                     width: "100%",
-                    
                   }}
                 >
-                  <img
+                  {<img
                     src={item.img}
                     alt={`Estanteria ${index}`}
                     style={{ width: "100%", height: "auto" }}
-                  />
+                  />}
                   <Box sx={{}}>
-                  {index > 0 && item.name && Array.isArray(item.name) && (
-                    <CajaHerramientasItems
-                      properties={{
-                        name: item.name,
-                        data: data,
-                        data_set: setData,
-                      }}
-                    />
-                  )}
+                    {index > 0 && item.name && Array.isArray(item.name) && (
+                      <CajaHerramientasItems
+                        properties={{
+                          name: item.name,
+                          data: data,
+                          data_set: setData,
+                        }}
+                      />
+                    )}
                   </Box>
                 </Grid>
               ))}
+              { }
+              <Grid
+                item
+                xs={12}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "flex-end",
+                  padding: 0,
+                  width: "100%",
+                }}
+              >
+                <Box
+                  sx={{
+                    width: "100%",
+                    height: "100%",
+                    backgroundColor: "#60686f",
+                  }}
+                />
+              </Grid>
             </Grid>
           </Box>
         </Grid>
+
         <Grid
           className="grid_columna_derecha"
           item
-          xs={2}
+          xs={1}
           sx={{
             display: "flex",
             justifyContent: "center",
@@ -137,20 +144,6 @@ function Body(props) {
             padding: 0,
           }}
         >
-          <Box className="personas_box_img"
-            sx={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "flex-end",
-            }}
-          >
-            <img
-              src={personImg}
-              alt="Personas"
-              style={{ width: "16vw", height: "40vh" }}
-            />
-          </Box>
         </Grid>
       </Grid>
       <TableInfoTematica properties={data.data_table} />
