@@ -3,27 +3,30 @@ import data_dimensiones from "../../json/data_dimensiones.json";
 import imgjs from "../ModuloImagenes/module_img";
 import HoverContent from "./HoverContent";
 import { Box, Grid } from "@mui/material";
+import TableInfoTematica from '../TableInfoTematica/TableInfoTematica'; // Importa el componente refactorizado
 
 export default function CajaHerramientasItems(props) {
   const [hoveredItem, setHoveredItem] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [modalData, setModalData] = useState([]);
   let props_data = props.properties;
+
+  const handleOpen = (data) => {
+    setModalData(data);
+    setOpen(true);
+  };
+
+  const handleClose = () => setOpen(false);
 
   const event_click = (e) => {
     const id = e.currentTarget.id.split("|")[1];
     const data = data_dimensiones.filter((item) => item.Tematica === id);
     props_data.data_set({ ...props_data.data, data_table: data });
-    document.querySelector(".click-exit").classList.remove("display-none");
-    document
-      .querySelector(".tabla-responsive")
-      .classList.remove("display-none");
-    document.querySelector("html").className += " background-aux-html";
+    handleOpen(data);
   };
 
   return (
-    <Box className="container-items-dimension"
-        
-
-    >
+    <Box className="container-items-dimension">
       <Grid container spacing={2} className="box-home-category-select-items"
         sx={{
             width: "100%",
@@ -87,12 +90,12 @@ export default function CajaHerramientasItems(props) {
           )
         )}
       </Grid>
+      <TableInfoTematica properties={modalData} open={open} handleClose={handleClose} />
     </Box>
   );
 }
 
 /**
- *  @author : cristian Duvan Machado
  *  @decs animacion sencilla para la caja
  */
 function create_caja_herramienta(data = {}) {
