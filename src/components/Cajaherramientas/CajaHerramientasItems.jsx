@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import data_dimensiones from "../../json/data_dimensiones.json";
 import imgjs from "../ModuloImagenes/module_img";
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import TableInfoTematica from '../TableInfoTematica/TableInfoTematica'; // Importa el componente refactorizado
 import TooltipWithContent from "./CustomTooltip";
 
 export default function CajaHerramientasItems(props) {
-  const [hoveredItem, setHoveredItem] = useState(null);
   const [open, setOpen] = useState(false);
   const [modalData, setModalData] = useState([]);
   const props_data = props.properties;
@@ -27,21 +26,23 @@ export default function CajaHerramientasItems(props) {
 
   return (
     <Box className="container-items-dimension">
-      <Grid container spacing={0} sx={{ width: "100%" }}>
+      <Typography variant="h4" sx={{ color: "#fff", textAlign: "center" }}>{data_dimensiones.Dimension}</Typography>
+      <Grid container spacing={0} sx={{ width: "100%" }} columns={7}>
         {props_data.name.map((dimension, dimensionIndex) =>
           create_caja_herramienta({ Dimension: dimension }).map(
             (item, index) => (
               <Grid
+                columns={8}
                 item
                 key={`${dimensionIndex}-${index}`}
-                sx={{ flexGrow: 1, minWidth: 0 }}
+                md={1}
               >
                 <Box
                   className="items-herramientas"
                   component="button"
                   sx={{
                     position: "relative",
-                    display: "flex",
+                    display: "inline-flex",
                     justifyContent: "center",
                     alignItems: "flex-end",
                     border: 0,
@@ -57,12 +58,10 @@ export default function CajaHerramientasItems(props) {
                     flexGrow: 1,
                   }}
                 >
-                  <TooltipWithContent properties={{ name: item.Tematica, json: data_dimensiones }}>
+                  <TooltipWithContent properties={{ name: item.Tematica, json: data_dimensiones}}>
                     <Box
                       id={`${index}|${item.Tematica}`}
                       onClick={event_click}
-                      onMouseEnter={() => setHoveredItem(`${dimensionIndex}-${index}`)}
-                      onMouseLeave={() => setHoveredItem(null)}
                       component="img"
                       src={imgjs[item.Codigo.split("-")[0]]}
                       alt={`Caja ${item.Tematica}`}
