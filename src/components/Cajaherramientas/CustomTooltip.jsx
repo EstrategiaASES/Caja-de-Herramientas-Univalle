@@ -20,8 +20,7 @@ const CustomTooltip = styled(({ className, ...props }) => (
     }} />
 ))({
   [`& .MuiTooltip-tooltip`]: {
-    backgroundColor: 'red',
-    color: 'white',
+    backgroundColor: '#E6E6FA',
     padding: '16px',
     borderRadius: '8px',
     maxHeight: '300px',
@@ -30,6 +29,7 @@ const CustomTooltip = styled(({ className, ...props }) => (
     overflowX: 'hidden',
     maxWidth: '300px',
     position: 'relative',
+    boxShadow: '0 15px 30px rgba(0, 0, 0, 0.8)',
   },
 });
 
@@ -52,8 +52,15 @@ export default function TooltipWithContent(props) {
     <CustomTooltip
       title={
         <Box className='container-items-hover'>
-          <Stack direction="row" alignItems="center" spacing={1}>
-        <Typography>{props_data.name}</Typography>
+          <Stack direction="row" alignItems="center" spacing={1}
+          sx={{
+            color: 'black',
+            backgroundColor: '#ffb846',
+            borderRadius: '10px',
+            padding: '10px',
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+          }}>
+        <Typography variant='subtitle1'>{props_data.name}</Typography>
         <LaunchIcon />
       </Stack>
           <Box className='content-tematicas'>
