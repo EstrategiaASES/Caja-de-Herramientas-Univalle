@@ -1,7 +1,8 @@
-import React from 'react';
-import { Tooltip, Typography, Box, Chip, Link, Stack } from '@mui/material';
+import React, { useState } from 'react';
+import { Tooltip, Typography, Box, Link, Stack, Modal } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import LaunchIcon from '@mui/icons-material/Launch';
+import TableInfoTematica from '../TableInfoTematica/TableInfoTematica'; // Importa el componente refactorizado
 
 const CustomTooltip = styled(({ className, ...props }) => (
   <Tooltip {...props} classes={{ popper: className }}
@@ -27,7 +28,7 @@ const CustomTooltip = styled(({ className, ...props }) => (
     overflowY: 'auto',
     position: 'relative',
     boxShadow: '0 3px 6px rgba(0, 0, 0, 0.1)',
-    Width: 'auto',
+    width: 'auto',
   },
 });
 
@@ -46,31 +47,51 @@ export default function TooltipWithContent(props) {
   const { properties, children } = props;
   const props_data = properties;
 
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
-    <CustomTooltip
-      title={
-        <Box className='container-items-hover'>
-          <Stack direction="row" alignItems="center" spacing={1}
-          sx={{
-            color: 'black',
-            backgroundColor: '#ffb846',
-            borderRadius: '10px',
-            padding: '10px',
-            marginBottom: '10px',
-            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-          }}>
-        <Typography variant='subtitle1' >{props_data.name}</Typography>
-        <LaunchIcon />
-      </Stack>
-          <Box className='content-tematicas'>
-            {create_text_hover(props_data.json, props_data.name).map((item, index) => (
-              <Typography sx={{ p: 0.5 }} key={index} variant="body2">{item}</Typography>
-            ))}
+    <>
+      <CustomTooltip
+        title={
+          <Box className='container-items-hover'>
+            <Stack direction="row" alignItems="center" spacing={1}
+              sx={{
+                color: 'black',
+                backgroundColor: '#ffb846',
+                borderRadius: '10px',
+                padding: '10px',
+                marginBottom: '10px',
+                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                cursor: 'pointer'
+              }}
+              onClick={handleOpen}
+            >
+              <Typography variant='subtitle1'>{props_data.name}</Typography>
+              <LaunchIcon />
+            </Stack>
+            <Box className='content-tematicas'>
+              {create_text_hover(props_data.json, props_data.name).map((item, index) => (
+                <Typography sx={{ p: 0.5 }} key={index} variant="body2">{item}</Typography>
+              ))}
+            </Box>
           </Box>
+        }
+      >
+        {children}
+      </CustomTooltip>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box>
+          <TableInfoTematica properties={props_data.json.filter((item) => item.Tematica === props_data.name)} open={open} handleClose={handleClose} />
         </Box>
-      }
-    >
-      {children}
-    </CustomTooltip>
+      </Modal>
+    </>
   );
 }

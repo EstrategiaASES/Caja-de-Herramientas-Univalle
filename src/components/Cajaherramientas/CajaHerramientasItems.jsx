@@ -6,23 +6,7 @@ import TableInfoTematica from '../TableInfoTematica/TableInfoTematica'; // Impor
 import TooltipWithContent from "./CustomTooltip";
 
 export default function CajaHerramientasItems(props) {
-  const [open, setOpen] = useState(false);
-  const [modalData, setModalData] = useState([]);
   const props_data = props.properties;
-
-  const handleOpen = (data) => {
-    setModalData(data);
-    setOpen(true);
-  };
-
-  const handleClose = () => setOpen(false);
-
-  const event_click = (e) => {
-    const id = e.currentTarget.id.split("|")[1];
-    const data = data_dimensiones.filter((item) => item.Tematica === id);
-    props_data.data_set({ ...props_data.data, data_table: data });
-    handleOpen(data);
-  };
 
   return (
     <Box className="container-items-dimension">
@@ -58,10 +42,9 @@ export default function CajaHerramientasItems(props) {
                     flexGrow: 1,
                   }}
                 >
-                  <TooltipWithContent properties={{ name: item.Tematica, json: data_dimensiones}}>
+                  <TooltipWithContent properties={{ name: item.Tematica, json: data_dimensiones }}>
                     <Box
                       id={`${index}|${item.Tematica}`}
-                      onClick={event_click}
                       component="img"
                       src={imgjs[item.Codigo.split("-")[0]]}
                       alt={`Caja ${item.Tematica}`}
@@ -79,7 +62,6 @@ export default function CajaHerramientasItems(props) {
           )
         )}
       </Grid>
-      <TableInfoTematica properties={modalData} open={open} handleClose={handleClose} />
     </Box>
   );
 }
