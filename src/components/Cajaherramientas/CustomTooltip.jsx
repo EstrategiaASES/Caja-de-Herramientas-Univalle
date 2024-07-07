@@ -32,12 +32,22 @@ const CustomTooltip = styled(({ className, ...props }) => (
   },
 });
 
-function create_text_hover(json = {}, name = '') {
+function create_text_hover(json = {}, name = '', handleClose) {
   let text_hover = [];
   const data = json.filter((item) => item.Tematica === name);
 
   data.forEach((item) => {
-    text_hover.push(<Link color="inherit" href={item.enlace_actividad} target="_blank" rel="noopener noreferrer">{item.Codigo}-{item.Nombre}</Link>);
+    text_hover.push(
+      <Link
+        color="inherit"
+        href={item.enlace_actividad}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={handleClose} // Aquí se cierra el tooltip al hacer clic en el enlace
+      >
+        {item.Codigo}-{item.Nombre}
+      </Link>
+    );
   });
 
   return text_hover;
@@ -57,7 +67,10 @@ export default function TooltipWithContent(props) {
       <CustomTooltip
         title={
           <Box className='container-items-hover'>
-            <Stack direction="row" alignItems="center" spacing={1}
+            <Stack
+              direction="row"
+              alignItems="center"
+              spacing={1}
               sx={{
                 color: 'black',
                 backgroundColor: '#ffb846',
@@ -73,7 +86,7 @@ export default function TooltipWithContent(props) {
               <LaunchIcon />
             </Stack>
             <Box className='content-tematicas'>
-              {create_text_hover(props_data.json, props_data.name).map((item, index) => (
+              {create_text_hover(props_data.json, props_data.name, handleClose).map((item, index) => (
                 <Typography sx={{ p: 0.5 }} key={index} variant="body2">{item}</Typography>
               ))}
             </Box>
@@ -89,7 +102,11 @@ export default function TooltipWithContent(props) {
         aria-describedby="modal-modal-description"
       >
         <Box>
-          <TableInfoTematica properties={props_data.json.filter((item) => item.Tematica === props_data.name)} open={open} handleClose={handleClose} />
+          <TableInfoTematica
+            properties={props_data.json.filter((item) => item.Tematica === props_data.name)}
+            open={open}
+            handleClose={handleClose}
+          />
         </Box>
       </Modal>
     </>

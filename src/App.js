@@ -1,50 +1,34 @@
-import { Grid, AppBar, Toolbar, Typography} from '@mui/material';
+import { Grid, Box } from '@mui/material';
 import React from 'react';
 import Body from './components/Body/Body';
-import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import BackgroundBox from './components/Body/Background';
 
 function App() {
   return (
-    <Grid container direction="column" 
+    <Grid
+      container
       sx={{
-        margin:0,
-        padding:0,
-       // overflow: "hidden"
+        position: "relative",
+        minHeight: "100vh",
       }}
+      columns={1}
     >
-      <Grid item sx ={{
-        backgroundColor: "#ba0017",
-        margin: 0,
-        padding: 0,
-        width: "100vw",
-        //overflow: "hidden",
-      
-      }}>
-        <Header />
-      </Grid>
-      <Grid item container justifyContent="center">
-        <Grid item sx={{
+      <BackgroundBox />
+      <Box sx={{ flex: 1, paddingBottom: "56px" }}>
+        <Body />
+      </Box>
+      <Box
+        sx={{
+          position: "fixed",
+          bottom: 0,
           width: "100%",
-          margin: 0,
-          padding: 0,
-          
-        }} >
-       <Body />   
-        </Grid>
-      </Grid>
-      <Grid item sx={{
-        backgroundColor: "#ba0017",
-        margin: 0,
-        padding: 0,
-        width: "100vw",
-        overflow: "hidden",
-      }} >
+        }}
+      >
         <Footer />
-      </Grid>
+      </Box>
     </Grid>
   );
 }
-
 
 export default App;

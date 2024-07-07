@@ -1,8 +1,6 @@
-import React, { useState } from "react";
 import data_dimensiones from "../../json/data_dimensiones.json";
 import imgjs from "../ModuloImagenes/module_img";
 import { Box, Grid, Typography } from "@mui/material";
-import TableInfoTematica from '../TableInfoTematica/TableInfoTematica'; // Importa el componente refactorizado
 import TooltipWithContent from "./CustomTooltip";
 
 export default function CajaHerramientasItems(props) {
@@ -11,12 +9,11 @@ export default function CajaHerramientasItems(props) {
   return (
     <Box className="container-items-dimension">
       <Typography variant="h4" sx={{ color: "#fff", textAlign: "center" }}>{data_dimensiones.Dimension}</Typography>
-      <Grid container spacing={0} sx={{ width: "100%" }} columns={7}>
+      <Grid container spacing={0} sx={{ width: "100%" }} columns={4}>
         {props_data.name.map((dimension, dimensionIndex) =>
           create_caja_herramienta({ Dimension: dimension }).map(
             (item, index) => (
               <Grid
-                columns={8}
                 item
                 key={`${dimensionIndex}-${index}`}
                 md={1}
@@ -32,13 +29,11 @@ export default function CajaHerramientasItems(props) {
                     border: 0,
                     background: "none",
                     width: "100%",
-                    height: "100%",
+                    height: "auto",
                     padding: 0,
                     paddingInline: "10px",
-                    paddingTop: "15px",
+                    paddingTop: "10px",
                     margin: 0,
-                    boxSizing: "border-box",
-                    borderBottom: "10px solid #ffb846",
                     flexGrow: 1,
                   }}
                 >
@@ -50,9 +45,7 @@ export default function CajaHerramientasItems(props) {
                       alt={`Caja ${item.Tematica}`}
                       sx={{
                         position: "relative",
-                        maxWidth: "100%",
-                        maxHeight: "100%",
-                        cursor: "pointer",
+                        height: "50%",
                       }}
                     />
                   </TooltipWithContent>
