@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import data_dimensiones from "../../json/data_dimensiones.json";
 import imgjs from "../ModuloImagenes/module_img";
 import { Box, Grid, Typography } from "@mui/material";
-import TableInfoTematica from '../TableInfoTematica/TableInfoTematica'; // Importa el componente refactorizado
 import TooltipWithContent from "./CustomTooltip";
 
 export default function CajaHerramientasItems(props) {

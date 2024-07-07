@@ -21,7 +21,8 @@ const module_image_url = {
     "D501": require('../../assets/cajas_herramientas/19_conociendo_u.png'),
     "D505": require('../../assets/cajas_herramientas/20_grupos_investigacion.png'),
     "D503": require('../../assets/cajas_herramientas/21_servicios_universitarios.png'),
-    "D502": require('../../assets/cajas_herramientas/22_conociendo_ases.png')
+    "D502": require('../../assets/cajas_herramientas/22_conociendo_ases.png'),
+    "RH01": require('../../assets/cajas_herramientas/23_rompehielo.png')
 }
 
 
