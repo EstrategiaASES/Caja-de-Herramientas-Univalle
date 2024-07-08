@@ -3,10 +3,12 @@ import { Tooltip, Typography, Box, Link, Stack, Modal } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import LaunchIcon from '@mui/icons-material/Launch';
 import TableInfoTematica from '../TableInfoTematica/TableInfoTematica'; // Importa el componente refactorizado
+import zIndex from '@mui/material/styles/zIndex';
 
 const CustomTooltip = styled(({ className, ...props }) => (
   <Tooltip {...props} classes={{ popper: className }}
     placement="top"
+    PopperProps={{style:{zIndex:1000}}}
     slotProps={{
       popper: {
         modifiers: [
