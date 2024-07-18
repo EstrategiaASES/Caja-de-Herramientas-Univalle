@@ -10,6 +10,9 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button'; // Importa el componente Button
 import CloseIcon from '@mui/icons-material/Close'; // Icono botón de cerrar
+import { Link, Typography } from '@mui/material';
+import LaunchIcon from '@mui/icons-material/Launch';
+
 
 const style = {
   position: 'absolute',
@@ -113,20 +116,22 @@ export default function TableInfoTematica({ properties, open, handleClose }) {
                 {data_info.map((item, index) => (
                   <TableRow key={index}>
                     <TableCell sx={{...tableHeaderStyles2, bgcolor:'white', color:'black'} }>
-                      <a 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      style={{
-                        textDecoration:'none',
-                        color:'black', 
-                        fontFamily:'Roboto, sans-serif',
-                        letterSpacing: '-0.8px',
-                        fontWeight: 'bold',
-                        textAlign:'center',
-                        }}
-                      href={item.enlace_actividad}>
+                      <Button
+                        component="button"
+                        href={item.enlace_actividad}
+                        target="_blank"
+                        style={{
+                          color:'black',
+                          backgroundColor:'#c3edfa',
+                          fontFamily:'Roboto, sans-serif',
+                          letterSpacing: '-0.8px',
+                          fontWeight: 'bold',
+                          textAlign:'center',
+                          }}
+                      >
                         {item.Nombre}
-                      </a>
+                        <LaunchIcon sx={{color:'#6699cc', margin:'2px'}}/>
+                      </Button>
                     </TableCell>
                     <TableCell sx={tableCellStyles2}>{item.descripcion_general}</TableCell>
                     <TableCell sx={tableCellStyles}>{item.Modalidad}</TableCell>

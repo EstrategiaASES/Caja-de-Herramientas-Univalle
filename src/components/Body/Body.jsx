@@ -4,20 +4,33 @@ import estanteria_1 from "../../assets/estanteria_1.png";
 import estanteria_2 from "../../assets/estanteria_2.png";
 import estanteria_3 from "../../assets/estanteria_3.png";
 import estanteria_4 from "../../assets/estanteria_4.png";
-import CajaHerramientasItems from "../Cajaherramientas/CajaHerramientasItems";
+import objeto1 from "../../assets/objeto_01.png";
+import objeto2 from "../../assets/objeto_02.png";
+import objeto3 from "../../assets/objeto_03.png";
+import objeto4 from "../../assets/objeto_04.png";
+import objeto5 from "../../assets/objeto_05.png";
+import objeto6 from "../../assets/objeto_06.png";
+import CajaAcademico from "../Cajaherramientas/CajaAcademico";
 import TableInfoTematica from "../TableInfoTematica/TableInfoTematica";
 
-function Body(props) {
-  let array_estanteria = [
-    { img: estanteria_1 },
-    { name: ["D1 Academica"], img: estanteria_2 },
-    { name: ["D3 Familiar", "D4 Indivividual"], img: estanteria_3 },
-    { name: ["D2 Economica", "D5 Vida Universitaria"], img: estanteria_4 },
-  ];
+const arrayEstanteria = [
+  { dimension: "D1 Academica", img: estanteria_2 },
+  { dimension: "D4 Individual", img: estanteria_3 },
+  { dimension: "D3 Familiar", img: estanteria_3 },
+  { dimension: "D2 Economica", img: estanteria_4 },
+  { dimension: "D5 Vida Universitaria", img: estanteria_4 },
+];
 
-  const [data, setData] = React.useState({
-    data_table: [],
-  });
+const dimensionToObjectMap = {
+  "D1 Academica": [objeto1, objeto2],
+  "D4 Individual": [objeto3],
+  "D3 Familiar": [objeto4],
+  "D2 Economica": [objeto6],
+  "D5 Vida Universitaria": [objeto5],
+};
+
+function Body(props) {
+  const [data] = React.useState({ data_table: [] });
 
   return (
     <Box
@@ -25,10 +38,7 @@ function Body(props) {
         display: 'relative',
         justifyContent: 'center',
         alignItems: 'bottom',
-        paddingLeft: '15%',
-        paddingRight: '15%',
-        paddingTop: 0,
-        paddingBottom: '0%',
+        padding: '0 5% 0 5%',
       }}
     >
       <Grid
@@ -53,69 +63,64 @@ function Body(props) {
               clipPath: 'polygon(0 0, 100% 0, 96% 100%, 4% 100%)',
               width: "100%",
               margin: 0,
-              padding: 0 
+              padding: 0
             }}
           >
-            {array_estanteria.map((item, index) => (
-              <Grid
-                item
-                key={index}
-                sx={{
-                  display: "absolute",
-                  justifyContent: "center",
-                  alignItems: "flex-end",
-                  paddingLeft: "0px",
-                  paddingRight: "0px",
-                  width: "100%",
-          backgroundColor: "#e5e5f7",
-          opacity: 0.8,
-          backgroundImage: "repeating-linear-gradient(0deg, #444cf7, #444cf7 1px, #e5e5f7 1px, #e5e5f7)",
-          backgroundSize: "20px 20px",
-                }}
-              >
-                <img
-                  src={item.img}
-                  alt={`Estanteria ${index}`}
-                  style={{ width: "100%", height: "auto" }}
-                />
-                
-                <Box>
-                  {index > 0 && item.name && Array.isArray(item.name) && (
-                    <CajaHerramientasItems
-                      properties={{
-                        name: item.name,
-                        data: data,
-                        data_set: setData,
-                      }}
-                    />
-                  )}
-                </Box>
-                
-              </Grid>
-            ))}
-            <Grid
-              item
+            <Box
               sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "flex-end",
-                padding: 0,
+                textAlign: "center",
                 width: "100%",
+                alignContent: "center",
+                background: 'linear-gradient(45deg, #FFB845, #FFD482, #FFC45E)',
               }}
             >
-              <Box
-                sx={{
-                  width: "100%",
-                  height: "100%",
-                  backgroundColor: "#60686f",
-                }}
+              <img
+                alt="Estanteria"
+                src={estanteria_1}
+                style={{ width: "50%", display: "block", margin: "0 auto", padding: "10px" }}
               />
-            </Grid>
+            </Box>
+
+            {arrayEstanteria.map((item, index) => (
+              <Grid
+                key={index}
+                item
+                xs={item.dimension === "D1 Academica" ? 12 : 6}
+                sx={{
+                  display: "flex",
+                  position: "relative",
+                  flexDirection: "column",
+                  justifyContent: "flex-end",
+                  alignItems: "center",
+                  backgroundColor: "#e5e5f7",
+                  opacity: 0.8,
+                  backgroundImage:
+                    "repeating-linear-gradient(0deg, #444cf7, #444cf7 1px, #e5e5f7 1px, #e5e5f7)",
+                  borderBottom: "10px solid #C96F3D",
+                  ...(item.dimension !== "D1 Academica" && { borderLeft: "10px solid #C96F3D" }),
+                  backgroundSize: "20px 20px",
+                }}
+              >
+                {dimensionToObjectMap[item.dimension]?.map((src, idx) => (
+                  <Box
+                    key={idx}
+                    component="img"
+                    src={src}
+                    sx={{
+                      alignSelf: "bottom",
+                      position: "absolute",
+                      zIndex: "-1",
+                      [idx % 2 === 0 ? 'left' : 'right']: "40px",
+                    }}
+                  />
+                ))}
+                <CajaAcademico dimensionName={item.dimension} />
+              </Grid>
+            ))}
           </Grid>
         </Box>
       </Grid>
       <TableInfoTematica properties={data.data_table} />
-      
     </Box>
   );
 }

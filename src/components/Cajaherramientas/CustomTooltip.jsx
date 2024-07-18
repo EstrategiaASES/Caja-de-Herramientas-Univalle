@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import { Tooltip, Typography, Box, Link, Stack, Modal } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import LaunchIcon from '@mui/icons-material/Launch';
-import TableInfoTematica from '../TableInfoTematica/TableInfoTematica'; // Importa el componente refactorizado
-import zIndex from '@mui/material/styles/zIndex';
+import TableInfoTematica from '../TableInfoTematica/TableInfoTematica';
 
 const CustomTooltip = styled(({ className, ...props }) => (
   <Tooltip {...props} classes={{ popper: className }}
     placement="top"
-    PopperProps={{style:{zIndex:1000}}}
+    PopperProps={{ style: { zIndex: 1000 } }}
     slotProps={{
       popper: {
         modifiers: [
@@ -34,9 +33,15 @@ const CustomTooltip = styled(({ className, ...props }) => (
   },
 });
 
-function create_text_hover(json = {}, name = '', handleClose) {
+function create_text_hover(json = [], name = '', handleClose) {
   let text_hover = [];
-  const data = json.filter((item) => item.Tematica === name);
+  let data;
+
+  if (name !== "ROMPEHIELO") {
+    data = json.filter((item) => item.Tematica === name);
+  } else {
+    data = json;
+  }
 
   data.forEach((item) => {
     text_hover.push(
@@ -45,7 +50,8 @@ function create_text_hover(json = {}, name = '', handleClose) {
         href={item.enlace_actividad}
         target="_blank"
         rel="noopener noreferrer"
-        onClick={handleClose} // Aquí se cierra el tooltip al hacer clic en el enlace
+        onClick={handleClose}
+        key={item.Codigo}
       >
         {item.Codigo}-{item.Nombre}
       </Link>
@@ -64,8 +70,12 @@ export default function TooltipWithContent(props) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const filteredProperties = props_data.name === 'ROMPEHIELO' 
+    ? props_data.json 
+    : props_data.json.filter(item => item.Tematica === props_data.name);
+
   return (
-    <>
+    <Box>
       <CustomTooltip
         title={
           <Box className='container-items-hover'>
@@ -105,12 +115,12 @@ export default function TooltipWithContent(props) {
       >
         <Box>
           <TableInfoTematica
-            properties={props_data.json.filter((item) => item.Tematica === props_data.name)}
+            properties={filteredProperties}
             open={open}
             handleClose={handleClose}
           />
         </Box>
       </Modal>
-    </>
+    </Box>
   );
 }
