@@ -10,7 +10,7 @@ import objeto3 from "../../assets/objeto_03.png";
 import objeto4 from "../../assets/objeto_04.png";
 import objeto5 from "../../assets/objeto_05.png";
 import objeto6 from "../../assets/objeto_06.png";
-import CajaAcademico from "../Cajaherramientas/CajaAcademico";
+import CajaAcademico from "../Cajaherramientas/CajaDimension";
 import TableInfoTematica from "../TableInfoTematica/TableInfoTematica";
 
 const arrayEstanteria = [
