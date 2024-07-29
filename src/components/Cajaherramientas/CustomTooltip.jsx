@@ -152,7 +152,7 @@ export default function TooltipWithContent(props) {
           vertical: 'bottom',
           horizontal: 'center',
         }}
-        sx={{width: 'fit-content'}}
+        disableScrollLock
       >
         {popoverContent}
       </CustomPopover>

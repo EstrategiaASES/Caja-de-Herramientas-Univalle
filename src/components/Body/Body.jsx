@@ -40,6 +40,7 @@ function Body(props) {
         justifyContent: 'center',
         alignItems: 'bottom',
         padding: '0 5% 0 5%',
+        overflow: 'hidden',
       }}
     >
       <Grid
