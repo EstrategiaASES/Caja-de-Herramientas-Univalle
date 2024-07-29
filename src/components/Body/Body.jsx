@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Box } from "@mui/material";
+import { Grid, Box, Fab } from "@mui/material";
 import estanteria_1 from "../../assets/estanteria_1.png";
 import estanteria_2 from "../../assets/estanteria_2.png";
 import estanteria_3 from "../../assets/estanteria_3.png";
@@ -12,6 +12,7 @@ import objeto5 from "../../assets/objeto_05.png";
 import objeto6 from "../../assets/objeto_06.png";
 import CajaAcademico from "../Cajaherramientas/CajaDimension";
 import TableInfoTematica from "../TableInfoTematica/TableInfoTematica";
+import AddIcon from '@mui/icons-material/Launch';
 
 const arrayEstanteria = [
   { dimension: "D1 Academica", img: estanteria_2 },
@@ -72,20 +73,34 @@ function Body(props) {
                 width: "100%",
                 alignContent: "center",
                 background: 'linear-gradient(45deg, #FFB845, #FFD482, #FFC45E)',
+                paddingTop: "10px",
+                paddingBottom: "10px",
               }}
             >
-              <img
-                alt="Estanteria"
-                src={estanteria_1}
-                style={{ width: "50%", display: "block", margin: "0 auto", padding: "10px" }}
-              />
+              <Box
+                sx={{
+                  width: {
+                    xs: "100%",
+                    sm: "70%",
+                    md: "50%"
+                  },
+                  margin: "0 auto",
+                }}
+              >
+                <img
+                  alt="Estanteria"
+                  src={estanteria_1}
+                  style={{ width: "100%", display: "block" }}
+                />
+              </Box>
             </Box>
 
             {arrayEstanteria.map((item, index) => (
               <Grid
                 key={index}
                 item
-                xs={item.dimension === "D1 Academica" ? 12 : 6}
+                md={item.dimension === "D1 Academica" ? 12 : 6}
+                xs={12}
                 sx={{
                   display: "flex",
                   position: "relative",
@@ -111,6 +126,7 @@ function Body(props) {
                       position: "absolute",
                       zIndex: "-1",
                       [idx % 2 === 0 ? 'left' : 'right']: "40px",
+                      display: { xs: 'none', md: 'block' },
                     }}
                   />
                 ))}
@@ -121,6 +137,7 @@ function Body(props) {
         </Box>
       </Grid>
       <TableInfoTematica properties={data.data_table} />
+
     </Box>
   );
 }

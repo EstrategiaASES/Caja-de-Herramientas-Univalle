@@ -6,6 +6,8 @@ import data_dimensiones from "../../json/data_dimensiones.json";
 import "../../fonts.css";
 
 export default function CajaAcademico({ dimensionName }) {
+
+  
   const temasUnicos = [];
   data_dimensiones.forEach((item) => {
     if (item.Dimension === dimensionName && !temasUnicos.some((tema) => tema.Tematica === item.Tematica)) {

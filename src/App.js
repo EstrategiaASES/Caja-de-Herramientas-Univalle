@@ -3,8 +3,12 @@ import React from 'react';
 import Body from './components/Body/Body';
 import Footer from './components/Footer/Footer';
 import BackgroundBox from './components/Body/Background';
+import { useEffect } from 'react';
 
 function App() {
+  useEffect(() => {
+    document.title = 'Caja de Herramientas';
+  }, []);
   return (
     <Grid
       container
@@ -25,8 +29,8 @@ function App() {
           width: "100%",
         }}
       >
-        <Footer />
       </Box>
+      <Footer />
     </Grid>
   );
 }

@@ -31,38 +31,38 @@ const style = {
 };
 
 const tableHeaderStyles = {
-  bgcolor: '#00c1ec', // Fondo azul para encabezados
-  color: 'white', // Texto blanco para contraste
-  fontSize: '1.5rem', // Tamaño de fuente similar a H1
-  fontFamily: 'Roboto, sans-serif', // Cambia esto a la fuente que prefieras
+  bgcolor: '#00c1ec',
+  color: 'white',
+  fontSize: '1rem',
+  fontFamily: 'Roboto, sans-serif',
   borderRight: '3px dashed white',
   textAlign: 'center',
 
 
 };
 const tableHeaderStyles2 = {
-  bgcolor: '#ee0000', // Fondo rojo para encabezados
-  color: 'white', // Texto blanco para contraste
-  fontSize: '1.5rem', // Tamaño de fuente similar a H1
-  fontFamily: 'Roboto, sans-serif', // Cambia esto a la fuente que prefieras
+  bgcolor: '#ee0000',
+  color: 'white',
+  fontSize: '1rem',
+  fontFamily: 'Roboto, sans-serif',
   borderRight: '3px dashed gray',
   textAlign: 'center',
 
 };
 
 const tableCellStyles = {
-  bgcolor: '#c3edfa', // Fondo azul claro para celdas
+  bgcolor: '#c3edfa',
   borderRight: '3px dashed white',
-  fontFamily: 'Roboto, sans-serif', // Cambia esto a la fuente que prefieras
+  fontFamily: 'Roboto, sans-serif',
   color:'black',
   textAlign: 'center',
 
 
 };
 const tableCellStyles2 = {
-  bgcolor: '#ffffff', // Fondo blanco para celdas
+  bgcolor: '#ffffff',
    borderRight: '3px dashed gray',
-  fontFamily: 'Roboto, sans-serif', // Cambia esto a la fuente que prefieras
+  fontFamily: 'Roboto, sans-serif',
   color:'black',
   textAlign: 'center',
 
@@ -99,8 +99,8 @@ export default function TableInfoTematica({ properties, open, handleClose }) {
           <CloseIcon />
         </Button>
         <Box sx={style}>
-          <TableContainer component={Paper}>
-            <Table aria-label="simple table">
+          <TableContainer sx={{ maxHeight: '80vh' }}>
+            <Table stickyHeader>
               <TableHead>
                 <TableRow>
                   <TableCell sx={tableHeaderStyles2}>Nombre:</TableCell>
